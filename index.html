@@ -5,85 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        #container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-        }
-
-        #left {
-            width: 15%;
-            height: 100%;
-            background: repeat-y center/contain url(./images/side_background.jpg);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        ul {
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        ul a {
-            display: block;
-            text-decoration: none;
-            color: #000;
-        }
-
-        li {
-            margin: auto;
-            list-style: none;
-            text-align: center;
-            border-radius: 20px;
-            width: 70%;
-            padding: 1.5px 20px;
-            font: 12px sans-serif;
-            text-transform: uppercase;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        li img {
-            width: 30%;
-        }
-
-        li:nth-child(odd) {
-            background-color: rgba(255, 255, 255, 0.5);
-        }
-
-        span {
-            margin-top: 5px;
-        }
-
-        #home {
-            display: block;
-            width: 100%;
-            padding: 10px 20px;
-        }
-
-        #home img {
-            width: 100%;
-        }
-
-        iframe {
-            width: 85%;
-            height: 100%;
-            background: no-repeat center/cover url(./images/light-bg.jpg);
-            padding: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/home.css">
 </head>
 
 <body>
@@ -115,7 +37,7 @@
                 <img src="./images/pyoko_button_home.png" alt="home">
             </a>
         </div>
-        <iframe src="./game/home.html" frameborder="0" name="iframe"></iframe>
+        <iframe src="./game/summary.html" frameborder="0" name="iframe" id="iframe"></iframe>
     </div>
     <!-- jQuery -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
@@ -130,6 +52,14 @@
             <img src="./images/Hiragana/${index * 5 + 1}.png">
             <img src="./images/Katakana/${index * 5 + 1}.png">
             `)
+        })
+
+        $(document).ready(function () {
+            $('#iframe').on('load', function () {
+                let dataNum = $(this).contents().find('.game').data('number')
+                $('li').even().removeClass('white-box')
+                $('li').eq(dataNum * 2).addClass('white-box')
+            })
         })
     </script>
 </body>
