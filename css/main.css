@@ -81,6 +81,11 @@ img {
     width: 100%;
 }
 
+.back img:hover,
+.next img:hover {
+    transform: rotate(-3deg);
+}
+
 .transparent {
     opacity: 0;
 }

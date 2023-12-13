@@ -42,9 +42,29 @@ li {
     width: 100%;
     padding: 1.5px 10px;
     position: relative;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 li:nth-child(odd) {
@@ -64,7 +84,7 @@ li img {
 
 .white-box {
     background-color: #fff !important;
-    box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: inset -2px -2px 3px rgba(0, 0, 0, 0.3), 2px 2px 3px rgba(0, 0, 0, 0.3);
 }
 
 span {
@@ -81,6 +101,10 @@ span {
 
 #home img {
     width: 100%;
+}
+
+#home img:hover {
+    transform: rotate(-3deg);
 }
 
 iframe {

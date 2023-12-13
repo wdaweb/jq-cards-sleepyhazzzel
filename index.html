@@ -37,7 +37,7 @@
                 <img src="./images/pyoko_button_home.png" alt="home">
             </a>
         </div>
-        <iframe src="./game/summary.html" frameborder="0" name="iframe" id="iframe"></iframe>
+        <iframe src="./game/table.html" frameborder="0" name="iframe" id="iframe"></iframe>
     </div>
     <!-- jQuery -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
@@ -56,6 +56,15 @@
 
         $(document).ready(function () {
             $('#iframe').on('load', function () {
+                if ($(this).contents().find('#main').length > 0) {
+                    $('li').css('animation', 'fade-out 0.8s linear')
+                    setTimeout(function () {
+                        $('li').css('display', 'none')
+                    }, 800)
+                } else {
+                    $('li').css('display', 'flex')
+                        .css('animation', 'fade-in 0.8s linear')
+                }
                 let dataNum = $(this).contents().find('.game').data('number')
                 $('li').even().removeClass('white-box')
                 $('li').eq(dataNum * 2).addClass('white-box')
