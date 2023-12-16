@@ -5,72 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/left-bar.css">
+    <link rel="stylesheet" href="./css/table.css">
+    <link rel="stylesheet" href="./css/game.css">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- 選關卡主頁 -->
-    <div id="container">
-        <div id="left">
-            <ul>
-                <li><span>（a）</span></li>
-                <li>▾</li>
-                <li><span>（ka）</span></li>
-                <li>▾</li>
-                <li><span>（sa）</span></li>
-                <li>▾</li>
-                <li><span>（ta）</span></li>
-                <li>▾</li>
-                <li><span>（na）</span></li>
-                <li>▾</li>
-                <li><span>（ha）</span></li>
-                <li>▾</li>
-                <li><span>（ma）</span></li>
-                <li>▾</li>
-                <li><span>（ya）</span></li>
-                <li>▾</li>
-                <li><span>（ra）</span></li>
-                <li>▾</li>
-                <li><span>（wa）</span></li>
-            </ul>
-            <a href="./index.html" id="home">
-                <img src="./images/pyoko_button_home.png" alt="home">
-            </a>
-        </div>
-        <iframe src="./game/table.html" frameborder="0" name="iframe" id="iframe"></iframe>
+    <div id="left">
+        <ul></ul>
+        <img src="./images/pyoko_button_home.png" alt="home" title="home" id="home-btn">
     </div>
+    <div id="main">
+        <div id="table">
+            <div id="background"></div>
+            <div class="half">
+                <div class="title-box">
+                    <div class="title">
+                        <div class="text">平仮名(ひらがな)</div>
+                    </div>
+                </div>
+                <div id="hiragana"></div>
+            </div>
+            <div class="line"></div>
+            <div class="half">
+                <div class="title-box">
+                    <div class="title">片仮名(カタカナ)</div>
+                </div>
+                <div id="katakana"></div>
+            </div>
+        </div>
+        <div id="game-container">
+            <div id="switch">
+                <img src="./images/navigation_back.png" alt="back" title="back" id="back">
+                <img src="./images/navigation_next.png" alt="next" title="next" id="next">
+            </div>
+        </div>
+    </div>
+
+
     <!-- jQuery -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js'
-        integrity='sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=='
-        crossorigin='anonymous'></script>
+    <script src='./js/jquery-3.7.1.min.js'></script>
+    <!-- jquery-watch -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/watch/2.0.4/watch.min.js'></script>
 
-    <script>
-        $('ul li:even').each(function (index) {
-            // .wrap() => 可以將括號內的 html 包裹在外層
-            $(this).wrap(`<a href="./game/${index}.html" target="iframe"></a>`)
-            $(this).prepend(`
-            <img src="./images/Hiragana/${index * 5 + 1}.png">
-            <img src="./images/Katakana/${index * 5 + 1}.png">
-            `)
-        })
+    <!-- myScript -->
+    <script src="./js/left-bar.js"></script>
+    <script src="./js/table.js"></script>
+    <script src="./js/game.js"></script>
 
-        $(document).ready(function () {
-            $('#iframe').on('load', function () {
-                if ($(this).contents().find('#main').length > 0) {
-                    $('li').css('animation', 'fade-out 0.8s linear')
-                    setTimeout(function () {
-                        $('li').css('display', 'none')
-                    }, 800)
-                } else {
-                    $('li').css('display', 'flex')
-                        .css('animation', 'fade-in 0.8s linear')
-                }
-                let dataNum = $(this).contents().find('.game').data('number')
-                $('li').even().removeClass('white-box')
-                $('li').eq(dataNum * 2).addClass('white-box')
-            })
-        })
-    </script>
 </body>
 
 </html>

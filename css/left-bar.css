@@ -1,12 +1,4 @@
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-#container {
+body {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -20,6 +12,12 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+}
+
+#main {
+    width: 85%;
+    height: 100%;
+    background: no-repeat center/cover url(../images/light-bg.jpg);
 }
 
 ul {
@@ -75,7 +73,11 @@ li:nth-child(odd) {
 }
 
 li:nth-child(odd):hover {
-    background-color: rgba(255, 255, 255, 1)
+    background-color: #fff
+}
+
+li:nth-child(even) {
+    color: saddlebrown;
 }
 
 li img {
@@ -88,28 +90,18 @@ li img {
 }
 
 span {
-    margin-top: 5px;
-    font: 12px sans-serif;
+    margin-bottom: 2px;
+    align-self: self-end;
+    font: 10px sans-serif;
     text-transform: uppercase;
+    color: saddlebrown;
 }
 
-#home {
-    display: block;
+#home-btn {
     width: 100%;
-    padding: 10px 20px;
+    padding: 20px;
 }
 
-#home img {
-    width: 100%;
-}
-
-#home img:hover {
+#home-btn:hover {
     transform: rotate(-3deg);
-}
-
-iframe {
-    width: 85%;
-    height: 100%;
-    background: no-repeat center/cover url(../images/light-bg.jpg);
-    padding: 10px;
 }

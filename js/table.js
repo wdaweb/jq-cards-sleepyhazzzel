@@ -37,15 +37,10 @@ $('#katakana').html(gridHtml)
 
 // 放文字
 $('#hiragana .box').each(function (index) {
-    $(this).css('background-image', `url(../images/Hiragana/${index + 1}.png)`)
+    $(this).css('background-image', `url(./images/Hiragana/${index + 1}.png)`)
 })
 $('#katakana .box').each(function (index) {
-    $(this).css('background-image', `url(../images/Katakana/${index + 1}.png)`)
-})
-
-// 進入遊戲
-$('.bg-row').on('click', function () {
-    location.href = `./${$(this).data('index')}.html`
+    $(this).css('background-image', `url(./images/Katakana/${index + 1}.png)`)
 })
 
 //顯示拼音
@@ -68,4 +63,12 @@ $('.bg-row').on('mouseleave', function () {
         $(`.row:eq(${rowNum1 + 1}) .smallText`).css('display', 'none')
         $(`.row:eq(${rowNum2 + 1}) .smallText`).css('display', 'none')
     }
+})
+
+// 進入遊戲
+$('.bg-row').on('click', function () {
+    $('#table').css('display', 'none')
+    $('li').css('display', 'flex')
+    $('#game-container').css('display', 'flex')
+    $(`.game:eq(${$(this).data('index')})`).css('display', 'grid')
 })

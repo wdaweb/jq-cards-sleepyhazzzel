@@ -1,8 +1,0 @@
-.game {
-    width: 80%;
-    height: 50vh;
-    display: grid;
-    justify-items: center;
-    grid-template-columns: repeat(5, 1fr);
-    margin-top: 15vh;
-}
